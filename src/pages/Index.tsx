@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Expense } from '../types/expense';
 import { ExpenseForm } from '../components/ExpenseForm';
 import { ExpenseList } from '../components/ExpenseList';
@@ -7,6 +8,7 @@ import { CategoryBreakdown } from '../components/CategoryBreakdown';
 import '../styles/dashboard.css';
 
 const Index = () => {
+  const navigate = useNavigate();
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [monthlyBudget, setMonthlyBudget] = useState<number>(0);
   const [budgetInput, setBudgetInput] = useState<string>('');
@@ -79,11 +81,21 @@ const Index = () => {
     return 'progress-success';
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    navigate('/login');
+  };
+
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
-        <h1 className="dashboard-title">💰 Controle de Gastos</h1>
-        <p className="dashboard-subtitle">Gerencie suas finanças de forma simples e eficiente</p>
+      <header className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <h1 className="dashboard-title">💰 Controle de Gastos</h1>
+          <p className="dashboard-subtitle">Gerencie suas finanças de forma simples e eficiente</p>
+        </div>
+        <button onClick={handleLogout} className="btn btn-primary">
+          🚪 Sair
+        </button>
       </header>
 
       <section className="budget-section">
