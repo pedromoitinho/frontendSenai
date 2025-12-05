@@ -35,5 +35,16 @@ export const BudgetAlert = ({ totalSpent, monthlyBudget }: BudgetAlertProps) => 
     );
   }
 
+  if (percentage >= 60) {
+    return (
+      <div className="alert alert-danger">
+        <span className="alert-icon">⚠️</span>
+        <div>
+          <strong>Alerta!</strong> Você já gastou {percentage.toFixed(0)}% do seu orçamento mensal. Cuidado com os gastos!
+        </div>
+      </div>
+    );
+  }
+
   return null;
 };

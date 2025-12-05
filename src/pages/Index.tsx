@@ -5,6 +5,9 @@ import { ExpenseForm } from '../components/ExpenseForm';
 import { ExpenseList } from '../components/ExpenseList';
 import { BudgetAlert } from '../components/BudgetAlert';
 import { CategoryBreakdown } from '../components/CategoryBreakdown';
+import { Logo } from '../components/Logo';
+import { AiChatbot } from '../components/AiChatbot';
+import { ExportPdfButton } from '../components/ExportPdfButton';
 import '../styles/dashboard.css';
 
 const Index = () => {
@@ -90,12 +93,14 @@ const Index = () => {
     <div className="dashboard-container">
       <header className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 className="dashboard-title">💰 Controle de Gastos</h1>
-          <p className="dashboard-subtitle">Gerencie suas finanças de forma simples e eficiente</p>
+          <Logo size={50} showText={true} />
         </div>
-        <button onClick={handleLogout} className="btn btn-primary">
-          🚪 Sair
-        </button>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <ExportPdfButton expenses={expenses} monthlyBudget={monthlyBudget} />
+          <button onClick={handleLogout} className="btn btn-primary">
+            🚪 Sair
+          </button>
+        </div>
       </header>
 
       <section className="budget-section">
@@ -173,6 +178,9 @@ const Index = () => {
       <section>
         <ExpenseList expenses={expenses} onDeleteExpense={handleDeleteExpense} />
       </section>
+
+      {/* Chatbot com IA */}
+      <AiChatbot expenses={expenses} monthlyBudget={monthlyBudget} />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Logo } from '../components/Logo';
 import '../styles/dashboard.css';
 
 const Login = () => {
@@ -28,11 +29,9 @@ const Login = () => {
   return (
     <div className="dashboard-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
       <div className="card" style={{ maxWidth: '450px', width: '100%' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h1 className="dashboard-title" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
-            💰 Controle de Gastos
-          </h1>
-          <p className="dashboard-subtitle" style={{ fontSize: '1rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '0.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Logo size={60} showText={true} />
+          <p className="dashboard-subtitle" style={{ fontSize: '1rem', marginTop: '0.1rem' }}>
             Faça login para acessar o sistema
           </p>
         </div>
