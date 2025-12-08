@@ -91,13 +91,13 @@ const Index = () => {
 
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
+      <header className="dashboard-header">
+        <div className="dashboard-brand">
           <Logo size={50} showText={true} />
         </div>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div className="dashboard-actions">
           <ExportPdfButton expenses={expenses} monthlyBudget={monthlyBudget} />
-          <button onClick={handleLogout} className="btn btn-primary">
+          <button onClick={handleLogout} className="btn btn-primary logout-btn">
             🚪 Sair
           </button>
         </div>
